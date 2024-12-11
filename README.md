@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Instrucciones para ejecutar el proyecto con Docker
 
-## Getting Started
+## 1. Clonación del repositorio
 
-First, run the development server:
+Primero, clona el repositorio en tu máquina local:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Orbitado/party-spot.git
+cd party-spot
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 2. Construir la imagen de Docker (docker-compose.yml)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Si el proyecto contiene un `Dockerfile` (y no un `docker-compose.yml`), puedes construir la imagen de Docker manualmente ejecutando:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+docker build -t <nombre-de-la-imagen> .
+```
 
-## Learn More
+## 3. Ejecutar el contenedor
 
-To learn more about Next.js, take a look at the following resources:
+Una vez que la imagen esté construida, puedes ejecutar el contenedor utilizando:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+docker run -p 3000:3000 <nombre-de-la-imagen>
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Esto mapeará el puerto `3000` en el contenedor al puerto `3000` en tu máquina local.
 
-## Deploy on Vercel
+## 4. Usando `docker-compose.yml`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Si el repositorio contiene un archivo `docker-compose.yml`, puedes levantar el contenedor más fácilmente con:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+docker-compose up
+```
+
+Esto construirá la imagen (si no existe) y levantará el contenedor según las configuraciones definidas en `docker-compose.yml`.
+
+## 5. Verificar la aplicación
+
+Una vez que el contenedor esté en ejecución, abre tu navegador y visita la siguiente URL:
+
+```
+http://localhost:3000
+```
+
+## Problemas comunes
+
+- **Problemas de permisos de Docker**: Si encuentras errores de permisos con Docker, asegúrate de que tu usuario esté en el grupo `docker` o ejecuta los comandos con `sudo`.
+- **Puertos ocupados**: Si el puerto `3000` está en uso en tu máquina, puedes modificar la configuración de puertos en el archivo `docker-compose.yml` o pasar un puerto diferente al ejecutar `docker run`.
