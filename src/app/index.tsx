@@ -1,8 +1,11 @@
+import AppProvider from './provider';
+import AppRouter from './router';
+
 function App() {
   return (
-    <div>
-      <h1>PartySpot</h1>
-    </div>
+    <AppProvider>
+      <AppRouter />
+    </AppProvider>
   );
 }
 
