@@ -14,7 +14,7 @@ function createAppRouter() {
   return createBrowserRouter([
     {
       path: paths.home.path,
-      element: <div>Home</div>,
+      lazy: () => import('./routes/landing').then(convert),
     },
     {
       path: paths.auth.register.path,
