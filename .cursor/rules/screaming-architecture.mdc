@@ -1,0 +1,37 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# PartySpot Folder Architecture Guidelines
+
+## Screaming Architecture
+
+This project follows the "Screaming Architecture" principle, where folder structure reflects domain purpose.
+
+## Folder Structure
+
+- `src/app/` - Global configuration (providers, routes, styles)
+- `src/modules/` - Domain-specific features
+  - Each module (auth, listings, bookings) has:
+    - `components/` - UI components
+    - `hooks/` - Custom hooks
+    - `services/` - API and business logic
+- `src/shared/` - Cross-module resources
+  - `components/` - Reusable UI elements
+  - `hooks/` - Generic hooks
+  - `utils/` - Helper functions
+- `src/types/` - Type definitions
+- `src/tests/` - Test files
+- `src/public/` - Static assets
+
+## Guidelines
+
+1. Keep components in their respective domain modules
+2. Place reusable components in `shared/components`
+3. Maintain separation of concerns (UI, business logic, data fetching)
+4. Add new features as modules under `src/modules/`
+5. Follow naming conventions that clearly describe purpose
+6. Keep modules independent and avoid circular dependencies
+
+@README.md

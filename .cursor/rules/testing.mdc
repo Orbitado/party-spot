@@ -1,0 +1,104 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Simple Testing Guidelines
+
+This document outlines a minimal testing approach for the PartySpot application.
+
+## Testing Philosophy
+
+- Test only what matters: critical user flows and core functionality
+- Follow the Arrange-Act-Assert pattern for clarity
+- Keep tests simple and maintainable
+
+## Component Testing (Vitest + React Testing Library)
+
+Test only key components that:
+
+- Handle important user interactions
+- Contain critical business logic
+- Are reused frequently throughout the app
+
+```tsx
+import { render, screen } from "@testing-library/react";
+import { describe, it, expect } from "vitest";
+import Button from "./button";
+
+describe("Button", () => {
+  it("renders correctly", () => {
+    // Arrange
+    render(<Button>Click me</Button>);
+
+    // Act & Assert
+    expect(screen.getByRole("button")).toHaveTextContent("Click me");
+  });
+});
+```
+
+## Form Testing
+
+Only test validation of critical forms:
+
+```tsx
+import { render, screen, fireEvent } from "@testing-library/react";
+import { describe, it, expect } from "vitest";
+import LoginForm from "./login-form";
+
+describe("LoginForm", () => {
+  it("validates required fields", async () => {
+    // Arrange
+    render(<LoginForm />);
+
+    // Act
+    fireEvent.click(screen.getByRole("button", { name: /login/i }));
+
+    // Assert
+    expect(await screen.findByRole("alert")).toBeInTheDocument();
+  });
+});
+```
+
+## E2E Testing with Playwright
+
+Test only the most critical user journeys:
+
+```ts
+// tests/e2e/critical-path.spec.ts
+import { test, expect } from "@playwright/test";
+
+test("user can sign up and create a listing", async ({ page }) => {
+  // Arrange
+  await page.goto("/");
+
+  // Act - Sign up
+  await page.click("text=Sign up");
+  await page.fill('[name="email"]', "test@example.com");
+  await page.fill('[name="password"]', "password123");
+  await page.click('button[type="submit"]');
+
+  // Assert - Dashboard loaded
+  await expect(page).toHaveURL("/dashboard");
+
+  // Act - Create listing
+  await page.click("text=Create Listing");
+  await page.fill('[name="title"]', "Test Venue");
+  await page.click('button[type="submit"]');
+
+  // Assert - Listing created
+  await expect(page.locator("text=Test Venue")).toBeVisible();
+});
+```
+
+## What to Test
+
+1. **Critical Paths**: Login, signup, booking creation
+2. **Core Components**: Buttons, forms, cards
+3. **Business Logic**: Pricing calculations, availability checks
+
+## What to Skip
+
+1. **UI details**: Exact styling, pixel-perfect rendering
+2. **Implementation details**: Internal state management
+3. **Third-party components**: Assume they work as documented
