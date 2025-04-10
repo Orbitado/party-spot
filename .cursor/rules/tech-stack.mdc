@@ -1,0 +1,56 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Tech Stack Usage Guidelines
+
+This document outlines when and how to use different technologies in the PartySpot application.
+
+## Frontend Technologies
+
+### React 19 + Vite
+
+- Use React 19 Actions for form submissions instead of manual state management
+- Leverage stylesheets with precedence attribute for better stylesheet management
+
+### State Management
+
+- **Local State**: Use React's useState for component-specific state that's simple
+- **Lot of Locals States**: Use React's useReducer when there are a lot of useStates for each thing or state is complex and interconnected
+- **Global State**: Use Redux Toolkit for cross-component state (auth, theme, etc.)
+
+### Forms
+
+- Always use React Hook Form with Zod validation schemas
+- Always handle errors, loadings, and other states.
+- Implement proper accessibility attributes (aria-invalid, role="alert")
+- Leverage controlled components for form inputs
+
+### CSS Styling
+
+- Use CSS Modules co-located with components
+- Implement responsive designs with CSS variables and custom media queries
+- Follow kebab-case for CSS class names
+- Use Lucide React for Icons
+
+## Backend Integration
+
+### Supabase
+
+- Use Supabase Auth for authentication and authorization
+- Leverage Supabase Database for data storage with proper RLS policies
+- Implement Supabase Storage for file uploads
+- Use Edge Functions for backend logic
+
+## Testing Best Practices
+
+- Write unit tests for all components and utilities
+- Implement integration tests for critical user flows
+- Use E2E testing with Playwright for key user journeys
+
+## Performance Considerations
+
+- Implement code splitting at the route level
+- Lazy load components when appropriate
+- Optimize images and assets for faster loading

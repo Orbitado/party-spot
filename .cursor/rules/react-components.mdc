@@ -1,0 +1,160 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# React Component Guidelines
+
+## Component Structure
+
+This project follows React 19 patterns with a focus on simplicity and maintainability.
+
+## Naming Conventions
+
+- Use kebab-case for all filenames (`button.tsx`, `user-profile.tsx`)
+- Use kebab-case for CSS modules (`button.module.css`, `user-profile.module.css`)
+- Use kebab-case for CSS class names (`.button-primary`, `.user-avatar`)
+- Use PascalCase for React component names (`Button`, `UserProfile`)
+
+## Component Creation
+
+1. Use `export default` for main components and `export const` for shared components:
+
+```tsx
+// Main component in modules/auth/components/login-form.tsx
+interface LoginFormProps {
+  onSuccess?: () => void;
+}
+
+export default function LoginForm({ onSuccess }: LoginFormProps) {
+  // implementation
+}
+
+// Shared component in shared/components/button.tsx
+interface ButtonProps {
+  variant?: "primary" | "secondary";
+  onClick?: () => void;
+  children: React.ReactNode;
+}
+
+export const Button = ({
+  variant = "primary",
+  onClick,
+  children,
+}: ButtonProps) => {
+  // implementation
+};
+```
+
+2. Always co-locate CSS modules with components:
+
+```
+button.tsx
+button.module.css
+```
+
+3. Use CSS modules with kebab-case class names:
+
+```css
+/* button.module.css */
+.button {
+  /* styles */
+}
+
+.button-primary {
+  /* styles */
+}
+```
+
+## Forms with React Hook Form & Zod
+
+1. Use Zod for schema validation:
+
+```tsx
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const loginSchema = z.object({
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(8, "Password must be at least 8 characters"),
+});
+
+type LoginFormData = z.infer<typeof loginSchema>;
+
+export default function LoginForm() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormData>({
+    resolver: zodResolver(loginSchema),
+  });
+
+  const onSubmit = (data: LoginFormData) => {
+    // Handle form submission
+  };
+
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div className={styles["form-group"]}>
+        <label htmlFor="email">Email</label>
+        <input
+          id="email"
+          type="email"
+          {...register("email")}
+          aria-invalid={errors.email ? "true" : "false"}
+        />
+        {errors.email && (
+          <span role="alert" className={styles["error-message"]}>
+            {errors.email.message}
+          </span>
+        )}
+      </div>
+
+      <button type="submit" className={styles["submit-button"]}>
+        Login
+      </button>
+    </form>
+  );
+}
+```
+
+## Accessibility
+
+- Include proper ARIA attributes in components
+- Use semantic HTML elements
+- Ensure keyboard navigation works
+- Implement proper focus management
+- Add `role="alert"` for error messages
+
+## State Management
+
+- Use React's built-in state management for local state
+- For global state, use Redux Toolkit as specified in the tech stack
+- For async data fetching, use TanStack Query
+
+## React 19 Features
+
+- Leverage the new stylesheet support with `precedence` attribute:
+
+```tsx
+<link rel="stylesheet" href="/styles/theme.css" precedence="default" />
+```
+
+- Use React 19 Actions for form submissions:
+
+```tsx
+const updateUserAction = async (formData: FormData) => {
+  // Form handling logic here
+};
+
+export default function UserProfileForm() {
+  return (
+    <form action={updateUserAction}>
+      {/* Form fields */}
+      <button type="submit">Update Profile</button>
+    </form>
+  );
+}
+```
