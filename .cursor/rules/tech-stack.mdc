@@ -32,6 +32,7 @@ This document outlines when and how to use different technologies in the PartySp
 - Use CSS Modules co-located with components
 - Implement responsive designs with CSS variables and custom media queries
 - Follow kebab-case for CSS class names
+- Use Lucide React for Icons
 
 ## Backend Integration
 
