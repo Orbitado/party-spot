@@ -1,0 +1,25 @@
+@use '../../../styles' as *;
+
+.search-bar {
+  @include flex($justify: center, $gap: $spacing-sm);
+}
+
+.select,
+.input,
+.button {
+  padding: $spacing-sm;
+  border: none;
+  border-radius: $radius-md;
+}
+
+.button {
+  background-color: $color-primary;
+  color: $color-text-white;
+  cursor: pointer;
+  @include transition;
+
+  &:hover {
+    background-color: $color-primary;
+    filter: brightness(0.9);
+  }
+}

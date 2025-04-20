@@ -1,6 +1,6 @@
 import Navbar from '@/shared/components/navbar';
 import HeroSection from '@/modules/landing/components/hero-section';
-import styles from './landing.module.css';
+import styles from './landing.module.scss';
 
 function Landing() {
   return (

@@ -1,5 +1,5 @@
 import { Search } from 'lucide-react';
-import styles from './search-field.module.css';
+import styles from './search-field.module.scss';
 
 function SearchField() {
   return (

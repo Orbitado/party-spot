@@ -1,0 +1,43 @@
+@use '../../../styles' as *;
+
+.container {
+  @include flex-column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  padding: 0 $spacing-md;
+}
+
+.title {
+  color: $color-primary;
+  margin-bottom: $spacing-md;
+  @include typography($font-size-2xl, $font-weight-bold);
+}
+
+.message {
+  margin-bottom: $spacing-md;
+  max-width: 500px;
+  color: $color-text-light;
+  @include typography($font-size-md);
+}
+
+.button {
+  background-color: $color-primary;
+  color: $color-text-white;
+  border: none;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $radius-md;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: $spacing-sm;
+  font-family: inherit;
+  @include typography($font-size-md, $font-weight-medium);
+  @include transition;
+
+  &:hover {
+    background-color: $color-primary;
+    filter: brightness(0.9);
+  }
+}

@@ -1,0 +1,105 @@
+@use '@/styles' as *;
+
+.section {
+  flex: 1;
+  @include flex-column;
+  justify-content: center;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: $color-text-white;
+  position: relative;
+  padding: $spacing-md;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $color-background-dark-opacity;
+  }
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  margin: 0 auto;
+  padding: 0 $spacing-md;
+  @include flex-column;
+  align-items: center;
+  gap: $spacing-md;
+}
+
+.highlight {
+  font-family: $font-family-display;
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-extrabold;
+  line-height: 1;
+}
+
+.text {
+  font-family: $font-family-display;
+  font-size: $font-size-3xl;
+  font-weight: $font-weight-extrabold;
+  line-height: 1;
+}
+
+.buttons-container {
+  @include flex($gap: $spacing-md);
+}
+
+.button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  @include transition;
+
+  &:hover {
+    color: $color-text-white;
+    
+    .icon {
+      transform: scale(1.1);
+      color: $color-text-white;
+    }
+  }
+}
+
+.icon {
+  @include transition;
+  color: $color-text-white;
+  width: $font-size-2xl;
+  height: $font-size-2xl;
+}
+
+// Responsive styles
+@media (min-width: 480px) {
+  .section {
+    padding: $spacing-md;
+  }
+
+  .highlight,
+  .text {
+    font-size: $font-size-5xl;
+  }
+}
+
+@media (min-width: 768px) {
+  .highlight,
+  .text {
+    font-size: $font-size-6xl;
+  }
+}
+
+@media (min-width: 1280px) {
+  .section {
+    height: calc(100vh - 80px);
+  }
+
+  .highlight,
+  .text {
+    font-size: $font-size-7xl;
+  }
+}

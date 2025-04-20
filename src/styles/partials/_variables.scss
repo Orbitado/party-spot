@@ -1,0 +1,73 @@
+// Typography
+$font-family-primary: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+$font-family-display: 'Gabarito', sans-serif;
+$line-height-base: 1.5;
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+$font-weight-extrabold: 800;
+
+// Colors
+$color-primary: var(--color-primary);
+$color-primary-dark: var(--color-primary-dark);
+$color-primary-light: var(--color-primary-light);
+$color-secondary: var(--color-secondary);
+$color-secondary-light: var(--color-secondary-light);
+$color-secondary-dark: var(--color-secondary-dark);
+$color-accent: var(--color-accent);
+$color-text: var(--color-text);
+$color-text-light: var(--color-text-light);
+$color-text-white: var(--color-text-white);
+$color-background: var(--color-background);
+$color-background-light: var(--color-background-light);
+$color-background-dark: var(--color-background-dark);
+$color-background-dark-opacity: var(--color-background-dark-opacity);
+$color-border: var(--color-border);
+$color-error: var(--color-error);
+$color-success: var(--color-success);
+$color-warning: var(--color-warning);
+$color-card-background: var(--color-card-background);
+$color-shadow: var(--color-shadow);
+
+// Breakpoints
+$breakpoint-xs: var(--breakpoint-xs);
+$breakpoint-sm: var(--breakpoint-sm);
+$breakpoint-md: var(--breakpoint-md);
+$breakpoint-lg: var(--breakpoint-lg);
+$breakpoint-xl: var(--breakpoint-xl);
+
+// Spacing
+$spacing-xs: var(--spacing-xs);
+$spacing-sm: var(--spacing-sm);
+$spacing-md: var(--spacing-md);
+$spacing-lg: var(--spacing-lg);
+$spacing-xl: var(--spacing-xl);
+$spacing-2xl: var(--spacing-2xl);
+
+// Border radius
+$radius-sm: var(--radius-sm);
+$radius-md: var(--radius-md);
+$radius-lg: var(--radius-lg);
+$radius-xl: var(--radius-xl);
+$radius-full: var(--radius-full);
+
+// Shadows
+$shadow-sm: var(--shadow-sm);
+$shadow-md: var(--shadow-md);
+$shadow-lg: var(--shadow-lg);
+$shadow-xl: var(--shadow-xl);
+$shadow-2xl: var(--shadow-2xl);
+
+// Font sizes
+$font-size-xs: var(--font-size-xs);
+$font-size-sm: var(--font-size-sm);
+$font-size-md: var(--font-size-md);
+$font-size-lg: var(--font-size-lg);
+$font-size-xl: var(--font-size-xl);
+$font-size-2xl: var(--font-size-2xl);
+$font-size-3xl: var(--font-size-3xl);
+$font-size-4xl: var(--font-size-4xl);
+$font-size-5xl: var(--font-size-5xl);
+$font-size-6xl: var(--font-size-6xl);
+$font-size-7xl: var(--font-size-7xl); 

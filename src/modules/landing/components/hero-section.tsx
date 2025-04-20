@@ -1,4 +1,4 @@
-import styles from './hero-section.module.css';
+import styles from './hero-section.module.scss';
 // import SearchField from '@/shared/components/search-field';
 import { heroSectionByIconSelected } from '../data/hero-by-icon';
 import { useState } from 'react';

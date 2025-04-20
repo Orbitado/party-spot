@@ -1,0 +1,122 @@
+@use 'variables' as *;
+
+// Responsive breakpoints
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "xs" {
+    @media (max-width: $breakpoint-xs) { @content; }
+  } @else if $breakpoint == "sm" {
+    @media (max-width: $breakpoint-sm) { @content; }
+  } @else if $breakpoint == "md" {
+    @media (max-width: $breakpoint-md) { @content; }
+  } @else if $breakpoint == "lg" {
+    @media (max-width: $breakpoint-lg) { @content; }
+  } @else if $breakpoint == "xl" {
+    @media (max-width: $breakpoint-xl) { @content; }
+  }
+}
+
+// Flexbox layouts
+@mixin flex($direction: row, $justify: flex-start, $align: stretch, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  @if $gap != 0 {
+    gap: $gap;
+  }
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+// Typography
+@mixin typography($size, $weight: $font-weight-regular, $line-height: $line-height-base) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $line-height;
+}
+
+@mixin heading($level: 1) {
+  font-family: $font-family-display;
+  font-weight: $font-weight-bold;
+  line-height: 1.2;
+  
+  @if $level == 1 {
+    font-size: $font-size-4xl;
+    @include respond-to("md") {
+      font-size: $font-size-3xl;
+    }
+  } @else if $level == 2 {
+    font-size: $font-size-3xl;
+    @include respond-to("md") {
+      font-size: $font-size-2xl;
+    }
+  } @else if $level == 3 {
+    font-size: $font-size-2xl;
+    @include respond-to("md") {
+      font-size: $font-size-xl;
+    }
+  } @else if $level == 4 {
+    font-size: $font-size-xl;
+    @include respond-to("md") {
+      font-size: $font-size-lg;
+    }
+  }
+}
+
+// Transitions
+@mixin transition($properties: all, $duration: 0.3s, $timing: ease) {
+  transition-property: $properties;
+  transition-duration: $duration;
+  transition-timing-function: $timing;
+}
+
+// Containers
+@mixin container($max-width: 1200px, $padding: $spacing-md) {
+  width: 100%;
+  max-width: $max-width;
+  margin: 0 auto;
+  padding-left: $padding;
+  padding-right: $padding;
+}
+
+// Buttons
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: $font-weight-medium;
+  cursor: pointer;
+  @include transition;
+  border: none;
+  outline: none;
+}
+
+// Shadows
+@mixin shadow($level: "md") {
+  @if $level == "sm" {
+    box-shadow: $shadow-sm;
+  } @else if $level == "md" {
+    box-shadow: $shadow-md;
+  } @else if $level == "lg" {
+    box-shadow: $shadow-lg;
+  } @else if $level == "xl" {
+    box-shadow: $shadow-xl;
+  } @else if $level == "2xl" {
+    box-shadow: $shadow-2xl;
+  }
+} 

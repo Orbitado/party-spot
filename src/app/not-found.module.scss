@@ -1,0 +1,39 @@
+@use '../styles' as *;
+
+.not-found-container {
+  @include flex-column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  background-color: $color-background;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.title {
+  @include typography($font-size-3xl, $font-weight-bold);
+  color: $color-secondary;
+  margin-bottom: $spacing-md;
+}
+
+.message {
+  @include typography($font-size-lg);
+  color: $color-text-light;
+  margin-bottom: $spacing-xl;
+}
+
+.home-link {
+  display: inline-block;
+  background-color: $color-primary;
+  color: $color-text-white;
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $radius-md;
+  font-weight: $font-weight-medium;
+  @include transition;
+    
+  &:hover {
+    background-color: $color-primary-dark;
+    transform: translateY(-2px);
+  }
+}
