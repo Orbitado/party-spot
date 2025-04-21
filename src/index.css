@@ -135,28 +135,3 @@ h6 {
   margin: 0 auto;
   padding: 0 var(--spacing-md);
 }
-
-/* Media queries */
-@media (min-width: 640px) {
-  .sm\:container {
-    max-width: 640px;
-  }
-}
-
-@media (min-width: 768px) {
-  .md\:container {
-    max-width: 768px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .lg\:container {
-    max-width: 1024px;
-  }
-}
-
-@media (min-width: 1280px) {
-  .xl\:container {
-    max-width: 1280px;
-  }
-}
