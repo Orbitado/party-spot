@@ -1,5 +1,5 @@
 import styles from './hero-section.module.scss';
-// import SearchField from '@/shared/components/search-field';
+import SearchField from '@/shared/components/search-field';
 import { heroSectionByIconSelected } from '../data/hero-by-icon';
 import { useState } from 'react';
 
@@ -47,7 +47,7 @@ function HeroSection() {
         </h1>
 
         {/* Search field */}
-        {/* <SearchField /> */}
+        <SearchField />
       </div>
     </section>
   );
