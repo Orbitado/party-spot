@@ -2,16 +2,38 @@
 
 $color-text-gray: #bcbcbc;
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .section {
   flex: 1;
   @include flex-column;
   justify-content: center;
-  background-size: cover;
-  background-position: center;
   text-align: center;
   color: $color-text-white;
   position: relative;
   padding: $spacing-md;
+  overflow: hidden;
+  background-color: black;
+}
+
+.background-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+  z-index: 0;
 
   &::before {
     content: '';
@@ -24,14 +46,20 @@ $color-text-gray: #bcbcbc;
   }
 }
 
+.active {
+  opacity: 1;
+  z-index: 1;
+}
+
 .container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   margin: 0 auto;
   padding: 0 $spacing-md;
   @include flex-column;
   align-items: center;
   gap: $spacing-md;
+  width: 100%;
 }
 
 .highlight {
@@ -39,6 +67,10 @@ $color-text-gray: #bcbcbc;
   font-size: $font-size-3xl;
   font-weight: $font-weight-extrabold;
   line-height: 1;
+  text-align: center;
+  width: 100%;
+  animation-duration: 1s;
+  animation-fill-mode: both;
 }
 
 .text {
@@ -46,6 +78,14 @@ $color-text-gray: #bcbcbc;
   font-size: $font-size-3xl;
   font-weight: $font-weight-extrabold;
   line-height: 1;
+  text-align: center;
+  width: 100%;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.fade-in {
+  animation-name: fadeIn;
 }
 
 .buttons-container {
@@ -81,7 +121,6 @@ $color-text-gray: #bcbcbc;
   @include transition;
 }
 
-// Responsive styles
 @media (min-width: 480px) {
   .section {
     padding: $spacing-md;
