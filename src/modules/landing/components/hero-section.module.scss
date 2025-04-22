@@ -1,5 +1,7 @@
 @use '@/styles' as *;
 
+$color-text-gray: #bcbcbc;
+
 .section {
   flex: 1;
   @include flex-column;
@@ -55,23 +57,28 @@
   border: none;
   cursor: pointer;
   padding: 0;
+  @include flex-center;
+  width: $font-size-3xl;
+  height: $font-size-3xl;
   @include transition;
 
   &:hover {
     color: $color-text-white;
-    
-    .icon {
-      transform: scale(1.1);
-      color: $color-text-white;
-    }
   }
 }
 
 .icon {
   @include transition;
-  color: $color-text-white;
+  color: $color-text-gray;
   width: $font-size-2xl;
   height: $font-size-2xl;
+}
+
+.icon-selected {
+  color: $color-text-white;
+  width: $font-size-3xl;
+  height: $font-size-3xl;
+  @include transition;
 }
 
 // Responsive styles
