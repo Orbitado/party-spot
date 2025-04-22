@@ -1,10 +1,23 @@
 import { Search, MapPin, Calendar, ChevronDown } from 'lucide-react';
 import styles from './search-field.module.scss';
 import { options } from './data';
+import { useState, FormEvent, ChangeEvent } from 'react';
 
 function SearchField() {
+  const today = new Date().toISOString().split('T')[0];
+  const [date, setDate] = useState(today);
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log('Search submitted with date:', date);
+  };
+
+  const handleDateChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setDate(e.target.value);
+  };
+
   return (
-    <form className={styles['search-container']}>
+    <form className={styles['search-container']} onSubmit={handleSubmit}>
       <div className={styles['search-field']}>
         <label htmlFor="planning-select" className={styles['search-label']}>
           ¿Qué estás planeando?
@@ -38,7 +51,7 @@ function SearchField() {
           <input
             id="location-input"
             type="text"
-            value="En cualquier lugar"
+            defaultValue="En cualquier lugar"
             placeholder="Ingresa una ubicación"
             className={styles['search-input']}
           />
@@ -55,10 +68,13 @@ function SearchField() {
         <div className={styles['input-with-icon']}>
           <input
             id="date-input"
-            type="text"
-            value="En cualquier momento"
+            type="date"
+            min={today}
+            value={date}
+            onChange={handleDateChange}
             placeholder="Selecciona una fecha"
             className={styles['search-input']}
+            lang="es-AR"
           />
           <Calendar size={16} className={styles['search-icon']} />
         </div>
