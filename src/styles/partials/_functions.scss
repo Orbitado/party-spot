@@ -1,0 +1,57 @@
+@use "sass:map";
+
+// Color functions
+@function lighten-color($color, $percentage) {
+  @if (str-index($color, "var(") == 1) {
+    // If it's a CSS variable, we need to use filter instead of mix
+    @return #{$color};
+  } @else {
+    @return mix(white, $color, $percentage);
+  }
+}
+
+@function darken-color($color, $percentage) {
+  @if (str-index($color, "var(") == 1) {
+    // If it's a CSS variable, we need to use filter instead of mix
+    @return #{$color};
+  } @else {
+    @return mix(black, $color, $percentage);
+  }
+}
+
+// Z-index management
+$z-layers: (
+  "modal": 1000,
+  "overlay": 900,
+  "dropdown": 800,
+  "header": 700,
+  "footer": 600,
+  "default": 1
+);
+
+@function z($layer) {
+  @if map.has-key($z-layers, $layer) {
+    @return map.get($z-layers, $layer);
+  }
+  
+  @error "Unknown layer '#{$layer}' in $z-layers.";
+  @return null;
+}
+
+// Spacing functions
+@function spacing($multiplier) {
+  @return $spacing-md * $multiplier;
+}
+
+// Unit conversion
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
+@function rem($pixels) {
+  @return strip-unit($pixels) / 16 * 1rem;
+}
+
+@function em($pixels, $context: 16) {
+  @return strip-unit($pixels) / strip-unit($context) * 1em;
+} 

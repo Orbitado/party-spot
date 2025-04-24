@@ -1,0 +1,255 @@
+@use '@/styles' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: $color-background;
+  @include shadow('sm');
+  z-index: z('header');
+}
+
+.navbar {
+  width: 100%;
+  padding: $spacing-md 0;
+  
+  &-container {
+    @include flex-between;
+    @include container;
+  }
+}
+
+.logo {
+  @include flex($align: center, $gap: $spacing-sm);
+  text-decoration: none;
+  
+  &-icon {
+    height: 3rem;
+    width: auto;
+  }
+  
+  &-image {
+    height: 3rem;
+    width: auto;
+  }
+}
+
+.nav-links {
+  @include flex($align: center, $gap: $spacing-xl);
+  
+  &.active {
+    max-height: 500px;
+    padding: $spacing-md 0;
+    @include transition;
+  }
+}
+
+.nav-link {
+  color: $color-text;
+  font-weight: $font-weight-medium;
+  font-size: $font-size-md;
+  text-decoration: none;
+  position: relative;
+  @include transition;
+  padding: $spacing-xs $spacing-sm;
+  border-radius: $radius-md;
+  white-space: nowrap;
+  @include flex($align: center, $gap: $spacing-xs);
+  
+  &-icon {
+    @include flex-center;
+    color: inherit;
+  }
+  
+  &:hover {
+    color: $color-primary;
+    
+    .nav-link-icon {
+      color: $color-primary;
+    }
+  }
+  
+  &-active {
+    background-color: $color-primary;
+    color: $color-text-white;
+    padding: $spacing-xs $spacing-sm;
+    
+    &:hover {
+      color: $color-text-white;
+    }
+    
+    .nav-link-icon {
+      color: $color-text-white;
+    }
+  }
+}
+
+.user-section {
+  @include flex($align: center);
+  
+  &-mobile {
+    display: none;
+  }
+}
+
+.avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: $radius-full;
+  overflow: hidden;
+  background-color: $color-primary-light;
+  @include flex-center;
+  color: $color-primary;
+  cursor: pointer;
+  @include transition((background-color, color));
+    
+  &:hover {
+    background-color: $color-primary;
+    color: $color-text-white;
+  }
+}
+
+.menu-button {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: z('dropdown');
+  color: $color-text;
+  @include transition(color);
+  
+  &:hover {
+    color: $color-primary;
+  }
+  
+  &-icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Responsive styles using mixins */
+@media (min-width: 1024px) {
+  .nav-link {
+    font-size: $font-size-md;
+    padding: $spacing-xs $spacing-sm;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .navbar {
+    &-container {
+      padding: 0 $spacing-sm;
+    }
+  }
+
+  .nav-links {
+    gap: $spacing-md;
+  }
+
+  .nav-link {
+    font-size: $font-size-sm;
+    padding: $spacing-xs $spacing-xs;
+  }
+
+  .logo {
+    &-icon {
+      height: 2.5rem;
+    }
+    
+    &-image {
+      height: 2.5rem;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: $spacing-sm 0;
+  }
+
+  .menu-button {
+    @include flex-center;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: auto;
+    background-color: $color-background;
+    @include flex-column;
+    align-items: center;
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    @include shadow('lg');
+    @include transition;
+    
+    &.active {
+      max-height: 500px;
+      padding: $spacing-md 0;
+    }
+  }
+
+  .nav-link {
+    margin: $spacing-xs 0;
+    width: 80%;
+    justify-content: center;
+  }
+
+  .nav-link-active {
+    width: 80%;
+    justify-content: center;
+  }
+
+  .user-section-mobile {
+    display: flex;
+  }
+
+  .user-section {
+    display: none;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .logo {
+    &-icon {
+      height: 2rem;
+    }
+    
+    &-image {
+      height: 2rem;
+    }
+  }
+
+  .nav-link {
+    font-size: $font-size-xs;
+    padding: $spacing-xs $spacing-xs;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    &-image {
+      height: 1.75rem;
+    }
+    
+    &-icon {
+      height: 1.75rem;
+    }
+  }
+
+  .avatar {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .nav-link {
+    font-size: $font-size-xs;
+    padding: $spacing-xs $spacing-xs;
+  }
+}

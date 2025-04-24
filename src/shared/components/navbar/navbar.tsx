@@ -3,7 +3,7 @@ import { NavLink } from 'react-router';
 import { paths } from '@/config/paths';
 import { Menu, X, User } from 'lucide-react';
 import { useOutsideClick } from '@/shared/hooks/use-outside-click';
-import styles from './navbar.module.css';
+import styles from './navbar.module.scss';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

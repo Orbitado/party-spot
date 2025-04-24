@@ -1,0 +1,119 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# SCSS Styling Guidelines
+
+## SCSS Modules with PostCSS
+
+This project uses SCSS Modules with PostCSS for component styling, enabling scoped styles, enhanced features, and modern CSS capabilities.
+
+## File Structure
+
+- Place SCSS module files alongside their corresponding components
+- Name SCSS files with `.module.scss` extension
+- Follow kebab-case naming nomenclature for SCSS files (e.g., `button.tsx` and `button.module.scss`)
+
+## Syntax & Features
+
+- Use kebab-case for class names: `.button-primary` not `.buttonPrimary`
+- Ensure that components are fully responsive
+- Create and utilize SCSS variables for colors, spacing, and typography
+- Use mixins for reusable style patterns
+- Implement nesting with the `&` operator for cleaner code
+- Apply partials for shared styles with `@import` or `@use`
+- Leverage SCSS functions for calculations
+- Implement media query mixins for responsive design
+
+## SCSS Best Practices
+
+- Structure your SCSS files using the 7-1 pattern for larger projects
+- Use `@extend` sparingly to avoid bloated CSS
+- Prefer mixins with parameters for flexibility
+- Create a consistent naming convention (BEM recommended)
+- Keep nesting to a maximum of 3 levels to avoid specificity issues
+- Use comments to document complex code sections
+
+## Example Usage
+
+```scss
+/* _variables.scss */
+$primary-color: #3a86ff;
+$secondary-color: #ff006e;
+$spacing-unit: 8px;
+
+/* _mixins.scss */
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "mobile" {
+    @media (max-width: 600px) { @content; }
+  } @else if $breakpoint == "tablet" {
+    @media (max-width: 900px) { @content; }
+  }
+}
+
+/* button.module.scss */
+@import 'variables';
+@import 'mixins';
+
+.button {
+  padding: $spacing-unit * 2 $spacing-unit * 3;
+  border-radius: 4px;
+  border: none;
+  transition: all 0.3s ease;
+  
+  // Variants
+  &.primary {
+    background-color: $primary-color;
+    color: white;
+    
+    &:hover {
+      background-color: darken($primary-color, 10%);
+    }
+  }
+  
+  &.secondary {
+    background-color: transparent;
+    border: 1px solid $secondary-color;
+    color: $secondary-color;
+    
+    &:hover {
+      background-color: rgba($secondary-color, 0.1);
+    }
+  }
+  
+  // States
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+  
+  // Responsive behavior
+  @include respond-to(mobile) {
+    width: 100%;
+    padding: $spacing-unit * 1.5 $spacing-unit * 2;
+  }
+}
+```
+
+```jsx
+// button.jsx
+import styles from "./button.module.scss";
+
+function Button({ variant = "primary", disabled, children }) {
+  return (
+    <button 
+      className={`${styles.button} ${styles[variant]}`}
+      disabled={disabled}
+    >
+      {children}
+    </button>
+  );
+}
+```
