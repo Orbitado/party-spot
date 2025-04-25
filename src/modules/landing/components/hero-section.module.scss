@@ -21,6 +21,7 @@ $color-text-gray: #bcbcbc;
   padding: $spacing-md;
   overflow: hidden;
   background-color: black;
+  min-height: calc(100vh - 80px);
 }
 
 .background-container {
@@ -141,7 +142,7 @@ $color-text-gray: #bcbcbc;
 
 @media (min-width: 1280px) {
   .section {
-    height: calc(100vh - 80px);
+    min-height: calc(100vh - 80px);
   }
 
   .highlight,

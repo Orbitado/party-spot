@@ -1,0 +1,329 @@
+@use '@/styles' as *;
+
+// Variables
+$primary-color: #0f2760;
+$secondary-color: #6c63ff;
+$text-color: #333;
+$light-gray: #f8f8f8;
+$border-radius: 8px;
+$shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+$spacing-unit: 8px;
+
+// Breakpoint mixins (mobile-first)
+@mixin for-tablet-up {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin for-desktop-up {
+  @media (min-width: 992px) {
+    @content;
+  }
+}
+
+@mixin for-large-desktop-up {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+// Component Styles
+.featured-spots-section {
+  padding: $spacing-unit * 4 0;
+  background-color: white;
+  border-radius: $border-radius;
+
+  @include for-tablet-up {
+    padding: $spacing-unit * 5 0;
+  }
+
+  @include for-desktop-up {
+    padding: $spacing-unit * 6 0;
+  }
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.section-header {
+  @include flex($align: center, $justify: space-between, $gap: $spacing-unit);
+  margin-bottom: $spacing-unit * 3;
+
+  @include for-tablet-up {
+    gap: $spacing-unit * 2;
+  }
+}
+
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $primary-color;
+  position: relative;
+
+  @include for-tablet-up {
+    font-size: 1.5rem;
+  }
+}
+
+// Grid layout
+.spots-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-unit * 2;
+  margin-bottom: $spacing-unit * 3;
+
+  @include for-tablet-up {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include for-large-desktop-up {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.spot-card {
+  height: 350px;
+  border-radius: $border-radius;
+  overflow: hidden;
+  box-shadow: $shadow;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  background-color: white;
+
+  @include for-tablet-up {
+    height: 400px;
+  }
+
+  @include for-desktop-up {
+    height: 450px;
+    min-width: auto;
+  }
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.spot-image-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  border-radius: $border-radius;
+}
+
+.spot-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+
+  .spot-card:hover & {
+    transform: scale(1.05);
+  }
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.7) 75%);
+  z-index: 1;
+}
+
+.spot-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: $spacing-unit * 1.5;
+  z-index: 2;
+  color: white;
+
+  @include for-tablet-up {
+    padding: $spacing-unit * 2;
+  }
+}
+
+.card-actions {
+  position: absolute;
+  top: $spacing-unit;
+  right: $spacing-unit;
+  z-index: 2;
+  display: flex;
+  gap: $spacing-unit * 0.75;
+
+  @include for-tablet-up {
+    top: $spacing-unit * 1.5;
+    right: $spacing-unit * 1.5;
+    gap: $spacing-unit;
+  }
+}
+
+.action-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.3);
+  transition: background-color 0.2s ease;
+
+  @include for-tablet-up {
+    width: 32px;
+    height: 32px;
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+
+.action-icon {
+  color: white;
+  width: 16px;
+  height: 16px;
+
+  @include for-tablet-up {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.spot-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: $spacing-unit;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+
+  @include for-tablet-up {
+    font-size: 1.2rem;
+  }
+}
+
+.spot-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+
+  @include for-tablet-up {
+    font-size: 1.25rem;
+  }
+}
+
+.price-period {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  margin-left: 2px;
+
+  @include for-tablet-up {
+    font-size: 0.9rem;
+  }
+}
+
+.price-review-line {
+  @include flex($align: center, $justify: space-between);
+  margin-bottom: $spacing-unit;
+
+  @include for-tablet-up {
+    margin-bottom: $spacing-unit * 1.5;
+  }
+}
+
+.spot-review {
+  @include flex($align: center, $gap: 4px);
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
+
+  @include for-tablet-up {
+    font-size: 0.9rem;
+    gap: 5px;
+  }
+}
+
+.review-star-icon {
+  color: gold;
+  fill: gold;
+  width: 14px;
+  height: 14px;
+
+  @include for-tablet-up {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.rating-value {
+  font-weight: 600;
+}
+
+.review-count {
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.8);
+
+  @include for-tablet-up {
+    font-size: 0.85rem;
+  }
+}
+
+.spot-metadata {
+  @include flex($align: center, $justify: space-between);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.9);
+
+  @include for-tablet-up {
+    font-size: 0.8rem;
+  }
+}
+
+.metadata-item {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+
+  @include for-tablet-up {
+    gap: 4px;
+  }
+
+  .metadata-icon {
+    color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+.view-all-link {
+  @include flex-center;
+  text-decoration: none;
+  color: $primary-color;
+  font-weight: 600;
+  font-size: 0.9rem;
+
+  @include for-tablet-up {
+    font-size: 1rem;
+  }
+
+  &:hover {
+    color: $primary-color;
+  }
+}
