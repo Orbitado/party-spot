@@ -1,3 +1,4 @@
+@use 'sass:color';
 @use '@/styles' as *;
 
 // Variables
@@ -324,6 +325,6 @@ $spacing-unit: 8px;
   }
 
   &:hover {
-    color: $primary-color;
+    color: color.scale($primary-color, $lightness: 10%);
   }
 }
