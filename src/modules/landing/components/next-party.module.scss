@@ -1,0 +1,145 @@
+@use '@/styles' as *;
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+  min-height: 600px;
+}
+
+.content {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  width: 55%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.title {
+  width: fit-content;
+  padding: $spacing-sm $spacing-md;
+  color: white;
+  font-weight: 700;
+  font-family: $font-family-display;
+  font-size: $font-size-5xl;
+  background: linear-gradient(to right, $color-primary, $color-primary-dark);
+  border-radius: $radius-md;
+}
+
+.card {
+  margin: $spacing-md 0;
+  width: fit-content;
+  max-width: 100%;
+
+  background-color: rgba(white, 0.8);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+
+  padding: $spacing-lg;
+  border-radius: $radius-md;
+}
+
+.subtitle {
+  font-size: $font-size-2xl;
+  font-family: $font-family-display;
+  color: $color-secondary;
+
+  margin-bottom: $spacing-md;
+}
+
+.categoriesContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: $spacing-sm;
+  border-radius: $radius-md;
+}
+
+.imageContainer {
+  position: absolute;
+  height: 90%;
+  top: 50%;
+  right: 35%;
+  width: 50%;
+  transform: translate(50%, -50%);
+  z-index: 0;
+  overflow: hidden;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: right;
+  border-radius: $radius-md;
+}
+
+// Tablet and smaller
+@media (max-width: 900px) {
+  .container {
+    min-height: 600px;
+    width: 90%;
+  }
+
+  .content,
+  .imageContainer {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: 100%;
+    transform: none;
+    z-index: auto;
+    height: auto;
+    max-height: none;
+  }
+
+  .content {
+    margin-bottom: $spacing-xl;
+  }
+
+  .card {
+    width: 100%;
+    padding: $spacing-md;
+  }
+
+  .title {
+    font-size: $font-size-4xl;
+  }
+
+  .subtitle {
+    font-size: $font-size-xl;
+  }
+
+  .categoriesContainer {
+    gap: $spacing-xs;
+  }
+
+  .imageContainer {
+    height: 400px;
+    overflow: hidden;
+    border-radius: $radius-md;
+  }
+}
+
+// Mobile
+@media (max-width: 600px) {
+  .title {
+    font-size: $font-size-3xl;
+  }
+
+  .subtitle {
+    font-size: $font-size-lg;
+  }
+
+  .categoriesContainer {
+    button {
+      font-size: $font-size-sm;
+      padding: $spacing-xs $spacing-sm;
+    }
+  }
+
+  .imageContainer {
+    height: 300px;
+  }
+}

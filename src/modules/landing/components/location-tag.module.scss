@@ -1,0 +1,23 @@
+@use '@/styles' as *;
+
+.tag {
+  position: absolute;
+  bottom: $spacing-md;
+  right: $spacing-md;
+
+  // Styling
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-xs;
+  padding: $spacing-sm;
+  background-color: rgba(black, 0.6);
+  color: white;
+  border-radius: $radius-full;
+  font-size: $font-size-sm;
+  font-weight: 500;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba($color-border, 0.2);
+
+  z-index: 1;
+}
