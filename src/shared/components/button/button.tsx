@@ -21,8 +21,8 @@ function Button({
     styles.button,
     styles[`button-${variant}`],
     styles[`button-${size}`],
-    isLoading ? styles['button-loading'] : '',
-    disabled ? styles['button-disabled'] : '',
+    isLoading ? styles.buttonLoading : '',
+    disabled ? styles.buttonDisabled : '',
     className,
   ]
     .filter(Boolean)
@@ -30,7 +30,7 @@ function Button({
 
   return (
     <button {...props} disabled={disabled || isLoading} className={buttonClasses}>
-      {isLoading && <div className={styles['loading-spinner']} />}
+      {isLoading && <div className={styles.loadingSpinner} />}
       {children}
     </button>
   );

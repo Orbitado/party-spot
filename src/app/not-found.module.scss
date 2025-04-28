@@ -1,6 +1,6 @@
 @use '../styles' as *;
 
-.not-found-container {
+.notFoundContainer {
   @include flex-column;
   align-items: center;
   justify-content: center;
@@ -23,7 +23,7 @@
   margin-bottom: $spacing-xl;
 }
 
-.home-link {
+.homeLink {
   display: inline-block;
   background-color: $color-primary;
   color: $color-text-white;

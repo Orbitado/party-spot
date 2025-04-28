@@ -14,7 +14,7 @@
   width: 100%;
   padding: $spacing-md 0;
   
-  &-container {
+  &__container {
     @include flex-between;
     @include container;
   }
@@ -24,18 +24,18 @@
   @include flex($align: center, $gap: $spacing-sm);
   text-decoration: none;
   
-  &-icon {
+  &__icon {
     height: 3rem;
     width: auto;
   }
   
-  &-image {
+  &__image {
     height: 3rem;
     width: auto;
   }
 }
 
-.nav-links {
+.navLinks {
   @include flex($align: center, $gap: $spacing-xl);
   
   &.active {
@@ -45,7 +45,7 @@
   }
 }
 
-.nav-link {
+.navLink {
   color: $color-text;
   font-weight: $font-weight-medium;
   font-size: $font-size-md;
@@ -57,7 +57,7 @@
   white-space: nowrap;
   @include flex($align: center, $gap: $spacing-xs);
   
-  &-icon {
+  &__icon {
     @include flex-center;
     color: inherit;
   }
@@ -65,12 +65,12 @@
   &:hover {
     color: $color-primary;
     
-    .nav-link-icon {
+    .navLink__icon {
       color: $color-primary;
     }
   }
   
-  &-active {
+  &--active {
     background-color: $color-primary;
     color: $color-text-white;
     padding: $spacing-xs $spacing-sm;
@@ -79,16 +79,16 @@
       color: $color-text-white;
     }
     
-    .nav-link-icon {
+    .navLink__icon {
       color: $color-text-white;
     }
   }
 }
 
-.user-section {
+.userSection {
   @include flex($align: center);
   
-  &-mobile {
+  &--mobile {
     display: none;
   }
 }
@@ -110,7 +110,7 @@
   }
 }
 
-.menu-button {
+.menuButton {
   display: none;
   background: none;
   border: none;
@@ -123,7 +123,7 @@
     color: $color-primary;
   }
   
-  &-icon {
+  &__icon {
     width: 24px;
     height: 24px;
   }
@@ -131,7 +131,7 @@
 
 /* Responsive styles using mixins */
 @media (min-width: 1024px) {
-  .nav-link {
+  .navLink {
     font-size: $font-size-md;
     padding: $spacing-xs $spacing-sm;
   }
@@ -139,26 +139,26 @@
 
 @media (min-width: 768px) and (max-width: 1023px) {
   .navbar {
-    &-container {
+    &__container {
       padding: 0 $spacing-sm;
     }
   }
 
-  .nav-links {
+  .navLinks {
     gap: $spacing-md;
   }
 
-  .nav-link {
+  .navLink {
     font-size: $font-size-sm;
     padding: $spacing-xs $spacing-xs;
   }
 
   .logo {
-    &-icon {
+    &__icon {
       height: 2.5rem;
     }
     
-    &-image {
+    &__image {
       height: 2.5rem;
     }
   }
@@ -169,11 +169,11 @@
     padding: $spacing-sm 0;
   }
 
-  .menu-button {
+  .menuButton {
     @include flex-center;
   }
 
-  .nav-links {
+  .navLinks {
     position: absolute;
     top: 100%;
     left: 0;
@@ -195,38 +195,38 @@
     }
   }
 
-  .nav-link {
+  .navLink {
     margin: $spacing-xs 0;
     width: 80%;
     justify-content: center;
   }
 
-  .nav-link-active {
+  .navLink--active {
     width: 80%;
     justify-content: center;
   }
 
-  .user-section-mobile {
+  .userSection--mobile {
     display: flex;
   }
 
-  .user-section {
+  .userSection {
     display: none;
   }
 }
 
 @media (min-width: 481px) and (max-width: 767px) {
   .logo {
-    &-icon {
+    &__icon {
       height: 2rem;
     }
     
-    &-image {
+    &__image {
       height: 2rem;
     }
   }
 
-  .nav-link {
+  .navLink {
     font-size: $font-size-xs;
     padding: $spacing-xs $spacing-xs;
   }
@@ -234,11 +234,11 @@
 
 @media (max-width: 480px) {
   .logo {
-    &-image {
+    &__image {
       height: 1.75rem;
     }
     
-    &-icon {
+    &__icon {
       height: 1.75rem;
     }
   }
@@ -248,7 +248,7 @@
     height: 2rem;
   }
 
-  .nav-link {
+  .navLink {
     font-size: $font-size-xs;
     padding: $spacing-xs $spacing-xs;
   }

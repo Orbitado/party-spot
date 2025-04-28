@@ -24,7 +24,7 @@ $color-text-gray: #bcbcbc;
   min-height: calc(100vh - 80px);
 }
 
-.background-container {
+.backgroundContainer {
   position: absolute;
   top: 0;
   left: 0;
@@ -85,11 +85,11 @@ $color-text-gray: #bcbcbc;
   animation-fill-mode: both;
 }
 
-.fade-in {
+.fadeIn {
   animation-name: fadeIn;
 }
 
-.buttons-container {
+.buttonsContainer {
   @include flex($gap: $spacing-md);
 }
 
@@ -115,7 +115,7 @@ $color-text-gray: #bcbcbc;
   height: $font-size-2xl;
 }
 
-.icon-selected {
+.iconSelected {
   color: $color-text-white;
   width: $font-size-3xl;
   height: $font-size-3xl;
