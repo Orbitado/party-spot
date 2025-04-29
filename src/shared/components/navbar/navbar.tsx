@@ -43,17 +43,13 @@ export default function Navbar() {
   return (
     <header className={styles.header}>
       <nav className={styles.navbar} ref={navRef}>
-        <div className={styles['navbar__container']}>
+        <div className={styles.navbar__container}>
           <NavLink to={paths.home.getHref()} className={styles.logo}>
-            <img
-              src="/brand/ps-logo.svg"
-              alt="PartySpot Icon Logo"
-              className={styles['logo__icon']}
-            />
+            <img src="/brand/ps-logo.svg" alt="PartySpot Icon Logo" className={styles.logo__icon} />
             <img
               src="/brand/party-spot.svg"
               alt="PartySpot Text Logo"
-              className={styles['logo__image']}
+              className={styles.logo__image}
             />
           </NavLink>
 
@@ -65,9 +61,9 @@ export default function Navbar() {
             aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
           >
             {isMenuOpen ? (
-              <X className={styles['menuButton__icon']} />
+              <X className={styles.menuButton__icon} />
             ) : (
-              <Menu className={styles['menuButton__icon']} />
+              <Menu className={styles.menuButton__icon} />
             )}
           </button>
 
