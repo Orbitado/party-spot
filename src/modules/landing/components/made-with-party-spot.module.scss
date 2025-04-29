@@ -1,0 +1,99 @@
+@use '@/styles' as *;
+
+.madeWithPartySpot {
+  margin: 0 auto;
+  padding: 30px 0 40px 0;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+
+  overflow-x: hidden;
+}
+
+.title {
+  font-family: $font-family-display;
+  font-size: $font-size-5xl;
+  font-weight: 700;
+  color: $color-secondary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  gap: 10px;
+
+  .logo {
+    max-height: $font-size-7xl;
+  }
+
+  @media (max-width: 900px) {
+    font-size: $font-size-4xl;
+
+    .logo {
+      max-height: $font-size-5xl;
+    }
+  }
+
+  @media (max-width: 600px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: $font-size-3xl;
+    gap: 5px;
+  }
+}
+
+.imageScroller {
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+
+  -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+.scrollerInner {
+  display: flex;
+  flex-wrap: nowrap;
+  width: fit-content;
+
+  animation: scroll 40s linear infinite;
+}
+
+.scrollerInnerReverse {
+  display: flex;
+  flex-wrap: nowrap;
+  width: fit-content;
+
+  animation: scroll 40s linear infinite reverse;
+}
+
+.scrollerImage {
+  height: 150px;
+  width: auto;
+  margin-right: 15px;
+  border-radius: 12px;
+  object-fit: cover;
+  aspect-ratio: 3 / 2;
+
+  @media (max-width: 600px) {
+    height: 100px;
+    margin-right: 10px;
+  }
+}
+
+.imageScroller:hover .scrollerInner {
+  animation-play-state: paused;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-80%);
+  }
+}

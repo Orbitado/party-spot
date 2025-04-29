@@ -17,12 +17,12 @@ This project uses SCSS Modules with PostCSS for component styling, enabling scop
 
 ## Syntax & Features
 
-- Use kebab-case for class names: `.button-primary` not `.buttonPrimary`
+- Use camelCase for class names: `.buttonPrimary` not `.button-primary`
 - Ensure that components are fully responsive
 - Create and utilize SCSS variables for colors, spacing, and typography
-- Use mixins for reusable style patterns
+- Use the partials defined on
 - Implement nesting with the `&` operator for cleaner code
-- Apply partials for shared styles with `@import` or `@use`
+- Apply partials for shared styles with `@use`
 - Leverage SCSS functions for calculations
 - Implement media query mixins for responsive design
 
@@ -31,7 +31,7 @@ This project uses SCSS Modules with PostCSS for component styling, enabling scop
 - Structure your SCSS files using the 7-1 pattern for larger projects
 - Use `@extend` sparingly to avoid bloated CSS
 - Prefer mixins with parameters for flexibility
-- Create a consistent naming convention (BEM recommended)
+- Create a consistent naming convention using BEM
 - Keep nesting to a maximum of 3 levels to avoid specificity issues
 - Use comments to document complex code sections
 
@@ -52,48 +52,51 @@ $spacing-unit: 8px;
 
 @mixin respond-to($breakpoint) {
   @if $breakpoint == "mobile" {
-    @media (max-width: 600px) { @content; }
+    @media (max-width: 600px) {
+      @content;
+    }
   } @else if $breakpoint == "tablet" {
-    @media (max-width: 900px) { @content; }
+    @media (max-width: 900px) {
+      @content;
+    }
   }
 }
 
 /* button.module.scss */
-@import 'variables';
-@import 'mixins';
+@use "@/styles" as *;
 
 .button {
   padding: $spacing-unit * 2 $spacing-unit * 3;
   border-radius: 4px;
   border: none;
   transition: all 0.3s ease;
-  
+
   // Variants
   &.primary {
     background-color: $primary-color;
     color: white;
-    
+
     &:hover {
       background-color: darken($primary-color, 10%);
     }
   }
-  
+
   &.secondary {
     background-color: transparent;
     border: 1px solid $secondary-color;
     color: $secondary-color;
-    
+
     &:hover {
       background-color: rgba($secondary-color, 0.1);
     }
   }
-  
+
   // States
   &:disabled {
     opacity: 0.6;
     cursor: not-allowed;
   }
-  
+
   // Responsive behavior
   @include respond-to(mobile) {
     width: 100%;
@@ -108,7 +111,7 @@ import styles from "./button.module.scss";
 
 function Button({ variant = "primary", disabled, children }) {
   return (
-    <button 
+    <button
       className={`${styles.button} ${styles[variant]}`}
       disabled={disabled}
     >

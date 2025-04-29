@@ -1,6 +1,6 @@
 @use '@/styles' as *;
 
-.search-container {
+.searchContainer {
   @include flex(row, space-between, center, $spacing-md);
   background-color: $color-background-light;
   border-radius: $radius-md;
@@ -23,7 +23,7 @@
   }
 }
 
-.search-field {
+.searchField {
   @include flex(column);
   padding: calc($spacing-sm / 2) calc($spacing-sm * 2);
   min-width: 150px;
@@ -41,7 +41,7 @@
   }
 }
 
-.search-select {
+.searchSelect {
   &-container {
     @include flex(row, center, center);
     width: 100%;
@@ -53,7 +53,7 @@
   }
 }
 
-.search-label {
+.searchLabel {
   text-align: left;
   font-size: $font-size-sm;
   font-weight: $font-weight-semibold;
@@ -67,8 +67,8 @@
   }
 }
 
-.search-input,
-.search-select {
+.searchInput,
+.searchSelect {
   border: none;
   background-color: transparent;
   font-size: $font-size-md;
@@ -88,7 +88,7 @@
   }
 }
 
-input[type='date'].search-input {
+input[type='date'].searchInput {
   -webkit-appearance: none;
   appearance: none;
   position: relative;
@@ -117,7 +117,7 @@ input[type='date'].search-input {
   }
 }
 
-.search-select {
+.searchSelect {
   appearance: none;
   cursor: pointer;
   width: 100%;
@@ -127,25 +127,25 @@ input[type='date'].search-input {
   }
 }
 
-.input-with-icon {
+.inputWithIcon {
   display: flex;
   align-items: center;
   width: 100%;
   position: relative;
 
-  .search-input {
+  .searchInput {
     flex-grow: 1;
     margin-right: $spacing-sm;
   }
 
-  .search-icon {
+  .searchIcon {
     position: absolute;
     right: 0;
     pointer-events: none;
   }
 }
 
-.search-icon {
+.searchIcon {
   color: $color-text-light;
   flex-shrink: 0;
 
@@ -154,7 +154,7 @@ input[type='date'].search-input {
   }
 }
 
-.search-divider {
+.searchDivider {
   width: 1px;
   background-color: $color-border;
   align-self: stretch;
@@ -165,7 +165,7 @@ input[type='date'].search-input {
   }
 }
 
-.search-button {
+.searchButton {
   @include flex(row, center, center);
   background-color: $color-primary;
   color: $color-text-white;
@@ -198,7 +198,7 @@ input[type='date'].search-input {
   }
 }
 
-.button-icon {
+.buttonIcon {
   margin-right: $spacing-sm;
 
   @media (max-width: 767px) {

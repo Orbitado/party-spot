@@ -12,8 +12,8 @@
   -moz-osx-font-smoothing: grayscale;
 
   /* Colors */
-  --color-primary: #e91e63; /* Main PartySpot color */
-  --color-primary-dark: #c2185b; /* Dark PartySpot color */
+  --color-primary: #e6267b; /* Main PartySpot color */
+  --color-primary-dark: #e3004c; /* Dark PartySpot color */
   --color-primary-light: #f48fb1; /* Light PartySpot color */
   --color-secondary: #0b003d; /* Secondary color */
   --color-secondary-light: #2c2150; /* Light secondary color */
@@ -53,7 +53,7 @@
   --radius-md: 0.5rem;
   --radius-lg: 1rem;
   --radius-xl: 2rem;
-  --radius-full: 100%;
+  --radius-full: 9999px;
 
   /* Shadows */
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);

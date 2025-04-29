@@ -17,55 +17,51 @@ function SearchField() {
   };
 
   return (
-    <form className={styles['search-container']} onSubmit={handleSubmit}>
-      <div className={styles['search-field']}>
-        <label htmlFor="planning-select" className={styles['search-label']}>
+    <form className={styles.searchContainer} onSubmit={handleSubmit}>
+      <div className={styles.searchField}>
+        <label htmlFor="planning-select" className={styles.searchLabel}>
           ¿Qué estás planeando?
         </label>
-        <div className={styles['search-select-container']}>
-          <select id="planning-select" className={styles['search-select']} defaultValue="default">
-            <option className={styles['search-select-option']} value="default" disabled>
+        <div className={styles.searchSelectContainer}>
+          <select id="planning-select" className={styles.searchSelect} defaultValue="default">
+            <option className={styles.searchSelectOption} value="default" disabled>
               Solo estoy viendo
             </option>
             {options.map((option) => (
-              <option
-                className={styles['search-select-option']}
-                key={option.value}
-                value={option.value}
-              >
+              <option className={styles.searchSelectOption} key={option.value} value={option.value}>
                 {option.label}
               </option>
             ))}
           </select>
-          <ChevronDown size={16} className={styles['search-icon']} />
+          <ChevronDown size={16} className={styles.searchIcon} />
         </div>
       </div>
 
-      <div className={styles['search-divider']}></div>
+      <div className={styles.searchDivider}></div>
 
-      <div className={styles['search-field']}>
-        <label htmlFor="location-input" className={styles['search-label']}>
+      <div className={styles.searchField}>
+        <label htmlFor="location-input" className={styles.searchLabel}>
           ¿Dónde?
         </label>
-        <div className={styles['input-with-icon']}>
+        <div className={styles.inputWithIcon}>
           <input
             id="location-input"
             type="text"
             defaultValue="En cualquier lugar"
             placeholder="Ingresa una ubicación"
-            className={styles['search-input']}
+            className={styles.searchInput}
           />
-          <MapPin size={16} className={styles['search-icon']} />
+          <MapPin size={16} className={styles.searchIcon} />
         </div>
       </div>
 
-      <div className={styles['search-divider']}></div>
+      <div className={styles.searchDivider}></div>
 
-      <div className={styles['search-field']}>
-        <label htmlFor="date-input" className={styles['search-label']}>
+      <div className={styles.searchField}>
+        <label htmlFor="date-input" className={styles.searchLabel}>
           ¿Cuándo?
         </label>
-        <div className={styles['input-with-icon']}>
+        <div className={styles.inputWithIcon}>
           <input
             id="date-input"
             type="date"
@@ -73,15 +69,15 @@ function SearchField() {
             value={date}
             onChange={handleDateChange}
             placeholder="Selecciona una fecha"
-            className={styles['search-input']}
+            className={styles.searchInput}
             lang="es-AR"
           />
-          <Calendar size={16} className={styles['search-icon']} />
+          <Calendar size={16} className={styles.searchIcon} />
         </div>
       </div>
 
-      <button type="submit" className={styles['search-button']}>
-        <Search size={18} className={styles['button-icon']} />
+      <button type="submit" className={styles.searchButton}>
+        <Search size={18} className={styles.buttonIcon} />
         <span>Buscar</span>
       </button>
     </form>

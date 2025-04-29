@@ -33,13 +33,13 @@ function HeroSection() {
     <section className={styles.section} id="hero-section">
       <div
         ref={bgRef1}
-        className={`${styles['background-container']} ${styles.active}`}
+        className={`${styles.backgroundContainer} ${styles.active}`}
         style={{ backgroundImage: `url(${heroSectionByIconSelected[0].backgroundUrl})` }}
       />
-      <div ref={bgRef2} className={styles['background-container']} />
+      <div ref={bgRef2} className={styles.backgroundContainer} />
 
       <div className={styles.container}>
-        <div className={styles['buttons-container']} onMouseEnter={pause} onMouseLeave={resume}>
+        <div className={styles.buttonsContainer} onMouseEnter={pause} onMouseLeave={resume}>
           {heroSectionByIconSelected.map((item, index) => (
             <button
               key={item.id}
@@ -49,18 +49,16 @@ function HeroSection() {
               onClick={() => selectItem(index)}
             >
               <item.icon
-                className={isIconSelected(item.icon) ? styles['icon-selected'] : styles.icon}
+                className={isIconSelected(item.icon) ? styles.iconSelected : styles.icon}
               />
             </button>
           ))}
         </div>
 
-        <h1 className={styles['title-container']} key={selectedItem.id}>
-          <span className={`${styles.highlight} ${styles['fade-in']}`}>
-            {selectedItem.highlight}
-          </span>
+        <h1 className={styles.titleContainer} key={selectedItem.id}>
+          <span className={`${styles.highlight} ${styles.fadeIn}`}>{selectedItem.highlight}</span>
           <br />
-          <span className={`${styles.text} ${styles['fade-in']}`}>{selectedItem.text}</span>
+          <span className={`${styles.text} ${styles.fadeIn}`}>{selectedItem.text}</span>
         </h1>
 
         {/* Search field */}
